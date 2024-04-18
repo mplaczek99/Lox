@@ -1,0 +1,52 @@
+class O { }
+class A < O {
+  m() {
+    print "<A>";
+    inner(); 
+    print "</A>";
+  }
+}
+class B < A  {
+  m() {
+    inner();
+    print "  <B>";
+    inner();
+    print "  </B>";
+    inner();
+  }
+}
+class C < B {
+  m() {
+    print "    <C />";
+    inner();
+  }
+}
+class E < A {
+  m() {
+    print "  <E />";
+  }
+}  
+
+A().m();
+// <A>
+// </A>
+
+B().m();
+// <A>
+//   <B>
+//   </B>
+// </A>
+
+C().m();
+// <A>
+//     <C />
+//   <B>
+//     <C />
+//   </B>
+//     <C />
+// </A>
+
+E().m();
+// <A>
+//   <E />
+// </A>

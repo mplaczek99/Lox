@@ -1,0 +1,60 @@
+fun toString (x) {
+  if (x == 0) { return "0"; }
+  if (x == 1) { return "1"; }
+  if (x == 2) { return "2"; }
+  if (x == 3) { return "3"; }
+  if (x == 4) { return "4"; }
+  if (x == 5) { return "5"; }
+  return "Too big";
+}
+class O {
+  init(s) {
+    this.s = s;
+  }
+  setOther(other) {
+    this.other = other;
+  }
+}
+class A < O {
+  m(x) {
+    if (x > 0) {
+      print "<A " + this.s + toString(x) + ">";
+      inner(x); 
+      print "</A " + this.s + toString(x) + ">";
+    }
+  }
+}
+class B < A  {
+  m(x) {
+    this.other.m(x-1);
+    print "  <B " + this.s + toString(x) + ">";
+  }
+}
+class E < A  {
+  m(x) {
+    this.other.m(x-1);
+    print "  <E " + this.s + toString(x) + ">";
+  }
+}
+
+var b = B("b");
+var e = E("e");
+b.setOther(e);
+e.setOther(b);
+
+b.m(4);
+
+/* Outputs:
+<A b4>
+<A e3>
+<A b2>
+<A e1>
+  <E e1>
+</A e1>
+  <B b2>
+</A b2>
+  <E e3>
+</A e3>
+  <B b4>
+</A b4>
+*/

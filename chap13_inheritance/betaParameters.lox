@@ -1,0 +1,27 @@
+class A {
+  m(x) {
+    print "<A " + x + ">";
+    inner("J"); 
+    print "</A " + x + ">";
+  }
+}
+class B < A  {
+  m(y) {
+    print "  <B " + y + ">";
+    inner("K");
+    print "  </B " + y + ">";
+  }
+}
+class C < B {
+  m(y) {
+    print "    <C " + y + "/>";
+  }
+}
+C().m("I");
+
+// Prints:
+// <A I>
+//   <B J>
+//     <C K/>
+//   </B J>
+// </A I>

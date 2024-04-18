@@ -1,0 +1,12 @@
+class A < B {
+  init () {
+    this.a = 10;
+  }
+}
+
+class B < A {
+  init () {
+    this.b = 20;
+  }
+}
+
