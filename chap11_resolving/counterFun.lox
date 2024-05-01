@@ -1,0 +1,15 @@
+fun getCounter() {
+  var x = -1;
+  fun count () {
+    x = x + 1;
+    return x;
+  }
+  return count;
+}
+
+var c1 = getCounter();
+var c2 = getCounter();
+print c1();
+print c1();
+print c2();
+print c2();

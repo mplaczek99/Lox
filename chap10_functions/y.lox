@@ -1,0 +1,16 @@
+var x = 10;
+fun f (x) {
+  fun g (y) {
+    return x + y;
+  }
+  return g;
+}
+
+var add1 = f(1);
+var add2 = f(2);
+print add1(3);
+print add1(30);
+
+print add1;
+print add2;
+print f;

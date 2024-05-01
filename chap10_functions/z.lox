@@ -1,0 +1,10 @@
+var x = 10;
+fun foo () { 
+  x = 20;
+}
+fun bar () { 
+  var x = 30;
+  foo ();
+}
+bar ();
+print x;

@@ -1,0 +1,30 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+
+    {
+      "type": "java",
+      "name": "Lox REPL",
+      "request": "launch",
+      "mainClass": "com.craftinginterpreters.lox.Lox",
+      "projectName": "com.craftinginterpreters.lox.Lox"
+    },
+    {
+      "type": "java",
+      "name": "Lox on a file",
+      "request": "launch",
+      "mainClass": "com.craftinginterpreters.lox.Lox",
+      "projectName": "com.craftinginterpreters.lox.Lox",
+      "args": "${command:SpecifyProgramArgs}"
+    },
+    {
+      "type": "java",
+      "name": "Current File",
+      "request": "launch",
+      "mainClass": "${file}"
+    }
+  ]
+}
