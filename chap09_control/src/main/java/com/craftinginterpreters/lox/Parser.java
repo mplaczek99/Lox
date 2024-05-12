@@ -7,7 +7,8 @@ import java.util.List;
 import static com.craftinginterpreters.lox.TokenType.*;
 
 class Parser {
-  private static class ParseError extends RuntimeException {}
+  private static class ParseError extends RuntimeException {
+  }
 
   private final List<Token> tokens;
   private int current = 0;
@@ -15,6 +16,7 @@ class Parser {
   Parser(List<Token> tokens) {
     this.tokens = tokens;
   }
+
   List<Stmt> parse() {
     List<Stmt> statements = new ArrayList<>();
     while (!isAtEnd()) {
@@ -23,12 +25,15 @@ class Parser {
 
     return statements;
   }
+
   private Expr expression() {
     return assignment();
   }
+
   private Stmt declaration() {
     try {
-      if (match(VAR)) return varDeclaration();
+      if (match(VAR))
+        return varDeclaration();
 
       return statement();
     } catch (ParseError error) {
@@ -36,15 +41,22 @@ class Parser {
       return null;
     }
   }
+
   private Stmt statement() {
-    if (match(FOR)) return forStatement();
-    if (match(IF)) return ifStatement();
-    if (match(PRINT)) return printStatement();
-    if (match(WHILE)) return whileStatement();
-    if (match(LEFT_BRACE)) return new Stmt.Block(block());
+    if (match(FOR))
+      return forStatement();
+    if (match(IF))
+      return ifStatement();
+    if (match(PRINT))
+      return printStatement();
+    if (match(WHILE))
+      return whileStatement();
+    if (match(LEFT_BRACE))
+      return new Stmt.Block(block());
 
     return expressionStatement();
   }
+
   private Stmt forStatement() {
     consume(LEFT_PAREN, "Expect '(' after 'for'.");
 
@@ -77,7 +89,8 @@ class Parser {
               new Stmt.Expression(increment)));
     }
 
-    if (condition == null) condition = new Expr.Literal(true);
+    if (condition == null)
+      condition = new Expr.Literal(true);
     body = new Stmt.While(condition, body);
 
     if (initializer != null) {
@@ -86,6 +99,7 @@ class Parser {
 
     return body;
   }
+
   private Stmt ifStatement() {
     consume(LEFT_PAREN, "Expect '(' after 'if'.");
     Expr condition = expression();
@@ -99,11 +113,13 @@ class Parser {
 
     return new Stmt.If(condition, thenBranch, elseBranch);
   }
+
   private Stmt printStatement() {
     Expr value = expression();
     consume(SEMICOLON, "Expect ';' after value.");
     return new Stmt.Print(value);
   }
+
   private Stmt varDeclaration() {
     Token name = consume(IDENTIFIER, "Expect variable name.");
 
@@ -115,6 +131,7 @@ class Parser {
     consume(SEMICOLON, "Expect ';' after variable declaration.");
     return new Stmt.Var(name, initializer);
   }
+
   private Stmt whileStatement() {
     consume(LEFT_PAREN, "Expect '(' after 'while'.");
     Expr condition = expression();
@@ -123,11 +140,13 @@ class Parser {
 
     return new Stmt.While(condition, body);
   }
+
   private Stmt expressionStatement() {
     Expr expr = expression();
     consume(SEMICOLON, "Expect ';' after expression.");
     return new Stmt.Expression(expr);
   }
+
   private List<Stmt> block() {
     List<Stmt> statements = new ArrayList<>();
 
@@ -138,6 +157,7 @@ class Parser {
     consume(RIGHT_BRACE, "Expect '}' after block.");
     return statements;
   }
+
   private Expr assignment() {
     Expr expr = or();
 
@@ -146,7 +166,7 @@ class Parser {
       Expr value = assignment();
 
       if (expr instanceof Expr.Variable) {
-        Token name = ((Expr.Variable)expr).name;
+        Token name = ((Expr.Variable) expr).name;
         return new Expr.Assign(name, value);
       }
 
@@ -155,6 +175,7 @@ class Parser {
 
     return expr;
   }
+
   private Expr or() {
     Expr expr = and();
 
@@ -166,6 +187,7 @@ class Parser {
 
     return expr;
   }
+
   private Expr and() {
     Expr expr = equality();
 
@@ -177,6 +199,7 @@ class Parser {
 
     return expr;
   }
+
   private Expr equality() {
     Expr expr = comparison();
 
@@ -188,6 +211,7 @@ class Parser {
 
     return expr;
   }
+
   private Expr comparison() {
     Expr expr = term();
 
@@ -199,6 +223,7 @@ class Parser {
 
     return expr;
   }
+
   private Expr term() {
     Expr expr = factor();
 
@@ -210,6 +235,7 @@ class Parser {
 
     return expr;
   }
+
   private Expr factor() {
     Expr expr = unary();
 
@@ -221,6 +247,7 @@ class Parser {
 
     return expr;
   }
+
   private Expr unary() {
     if (match(BANG, MINUS)) {
       Token operator = previous();
@@ -230,10 +257,14 @@ class Parser {
 
     return primary();
   }
+
   private Expr primary() {
-    if (match(FALSE)) return new Expr.Literal(false);
-    if (match(TRUE)) return new Expr.Literal(true);
-    if (match(NIL)) return new Expr.Literal(null);
+    if (match(FALSE))
+      return new Expr.Literal(false);
+    if (match(TRUE))
+      return new Expr.Literal(true);
+    if (match(NIL))
+      return new Expr.Literal(null);
 
     if (match(NUMBER, STRING)) {
       return new Expr.Literal(previous().literal);
@@ -251,6 +282,7 @@ class Parser {
 
     throw error(peek(), "Expect expression.");
   }
+
   private boolean match(TokenType... types) {
     for (TokenType type : types) {
       if (check(type)) {
@@ -261,19 +293,26 @@ class Parser {
 
     return false;
   }
+
   private Token consume(TokenType type, String message) {
-    if (check(type)) return advance();
+    if (check(type))
+      return advance();
 
     throw error(peek(), message);
   }
+
   private boolean check(TokenType type) {
-    if (isAtEnd()) return false;
+    if (isAtEnd())
+      return false;
     return peek().type == type;
   }
+
   private Token advance() {
-    if (!isAtEnd()) current++;
+    if (!isAtEnd())
+      current++;
     return previous();
   }
+
   private boolean isAtEnd() {
     return peek().type == EOF;
   }
@@ -285,15 +324,18 @@ class Parser {
   private Token previous() {
     return tokens.get(current - 1);
   }
+
   private ParseError error(Token token, String message) {
     Lox.error(token, message);
     return new ParseError();
   }
+
   private void synchronize() {
     advance();
 
     while (!isAtEnd()) {
-      if (previous().type == SEMICOLON) return;
+      if (previous().type == SEMICOLON)
+        return;
 
       switch (peek().type) {
         case CLASS:

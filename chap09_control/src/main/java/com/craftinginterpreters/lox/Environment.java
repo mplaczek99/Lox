@@ -6,6 +6,7 @@ import java.util.Map;
 class Environment {
   final Environment enclosing;
   private final Map<String, Object> values = new HashMap<>();
+
   Environment() {
     enclosing = null;
   }
@@ -19,7 +20,8 @@ class Environment {
       return values.get(name.lexeme);
     }
 
-    if (enclosing != null) return enclosing.get(name);
+    if (enclosing != null)
+      return enclosing.get(name);
 
     throw new RuntimeError(name,
         "Undefined variable '" + name.lexeme + "'.");
@@ -39,9 +41,11 @@ class Environment {
     throw new RuntimeError(name,
         "Undefined variable '" + name.lexeme + "'.");
   }
+
   void define(String name, Object value) {
     values.put(name, value);
   }
+
   @Override
   public String toString() {
     String result = values.toString();

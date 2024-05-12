@@ -76,7 +76,8 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
 
   @Override
   public String visitLiteralExpr(Expr.Literal expr) {
-    if (expr.value == null) return "nil";
+    if (expr.value == null)
+      return "nil";
     return expr.value.toString();
   }
 
@@ -94,6 +95,7 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
   public String visitVariableExpr(Expr.Variable expr) {
     return expr.name.lexeme;
   }
+
   private String parenthesize(String name, Expr... exprs) {
     StringBuilder builder = new StringBuilder();
 
@@ -106,6 +108,7 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
 
     return builder.toString();
   }
+
   // Note: AstPrinting other types of syntax trees is not shown in the
   // book, but this is provided here as a reference for those reading
   // the full code.
@@ -123,7 +126,7 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
     for (Object part : parts) {
       builder.append(" ");
       if (part instanceof Expr) {
-        builder.append(((Expr)part).accept(this));
+        builder.append(((Expr) part).accept(this));
       } else if (part instanceof Stmt) {
         builder.append(((Stmt) part).accept(this));
       } else if (part instanceof Token) {
