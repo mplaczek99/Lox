@@ -80,8 +80,14 @@ class Interpreter implements Expr.Visitor<Object>,
 
   @Override
   public Void visitWhileStmt(Stmt.While stmt) {
-    while (isTruthy(evaluate(stmt.condition))) {
-      execute(stmt.body);
+    // Rewrote this one just a bit to handle breaks
+
+    try {
+      while (isTruthy(evaluate(stmt.condition))) {
+        execute(stmt.body);
+      }
+    } catch (BreakJump bj) {
+      // Catch the break to exit the loop
     }
     return null;
   }
@@ -139,6 +145,10 @@ class Interpreter implements Expr.Visitor<Object>,
 
     // Unreachable.
     return null;
+  }
+
+  public Void visitBreakStmt(Stmt.Break stmt) {
+    throw new BreakJump();
   }
 
   @Override
@@ -231,5 +241,9 @@ class Interpreter implements Expr.Visitor<Object>,
     }
 
     return object.toString();
+  }
+
+  private static class BreakJump extends RuntimeException {
+    // No additional implementation needed; just for control flow
   }
 }
