@@ -309,8 +309,30 @@ class Parser {
       consume(RIGHT_PAREN, "Expect ')' after expression.");
       return new Expr.Grouping(expr);
     }
+    
+    if (match(FUN)) { // Start of an anonymous function
+      return anonymousFunction();
+    }
 
     throw error(peek(), "Expect expression.");
+  }
+  private Expr anonymousFunction() {
+    consume(LEFT_PAREN, "Expect '(' after 'fun'.");
+    List<Token> parameters = new ArrayList<>();
+    if (!check(RIGHT_PAREN)) {
+      do {
+        if (parameters.size() >= 255) {
+          error(peek(), "Can't have more than 255 parameters.");
+        }
+
+        parameters.add(consume(IDENTIFIER, "Expect parameter name."));
+      } while (match(COMMA));
+    }
+    consume(RIGHT_PAREN, "Expect ')' after parameters.");
+
+    consume(LEFT_BRACE, "Expect '{' before anonymous function body.");
+    List<Stmt> body = block();
+    return new Expr.AnonymousFunction(parameters, body);
   }
   private boolean match(TokenType... types) {
     for (TokenType type : types) {

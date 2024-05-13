@@ -165,6 +165,10 @@ class Interpreter implements Expr.Visitor<Object>,
     return null;
   }
   @Override
+  public Object visitAnonymousFunctionExpr(Expr.AnonymousFunction expr) {
+    return new LoxFunction(expr, environment);
+  }
+  @Override
   public Object visitAssignExpr(Expr.Assign expr) {
     Object value = evaluate(expr.value);
     environment.assign(expr.name, value);
