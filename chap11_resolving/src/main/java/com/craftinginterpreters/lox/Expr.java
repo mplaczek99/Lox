@@ -129,20 +129,20 @@ abstract class Expr {
     final Token name;
   }
   
-  static class Function extends Expr {
-    Function(List<Token> params, List<Stmt> body) {
-      this.params = params;
-      this.body = body;
-    }
+    static class Function extends Expr {
+        final List<Token> params;
+        final List<Stmt> body;
 
-    @Override
-    <R> R accept(Visitor<R> visitor) {
-      return visitor.visitFunctionExpr(this);
-    }
+        Function(List<Token> params, List<Stmt> body) {
+            this.params = params;
+            this.body = body;
+        }
 
-    final List<Token> params;
-    final List<Stmt> body;
-  }
+        @Override
+        <R> R accept(Visitor<R> visitor) {
+            return visitor.visitFunctionExpr(this);
+        }
+    }
 
   abstract <R> R accept(Visitor<R> visitor);
 }

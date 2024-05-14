@@ -1,0 +1,14 @@
+-------------------------------------------------------------------------------
+Test set: com.craftinginterpreters.lox.Tests
+-------------------------------------------------------------------------------
+Tests run: 13, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.035 s <<< FAILURE! - in com.craftinginterpreters.lox.Tests
+anonymous5  Time elapsed: 0.009 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <1> but was: <Parse error>
+	at com.craftinginterpreters.lox.Tests.outputTest(Tests.java:65)
+	at com.craftinginterpreters.lox.Tests.anonymous5(Tests.java:86)
+
+anonymous6  Time elapsed: 0 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <> but was: <Parse error>
+	at com.craftinginterpreters.lox.Tests.outputTest(Tests.java:65)
+	at com.craftinginterpreters.lox.Tests.anonymous6(Tests.java:90)
+

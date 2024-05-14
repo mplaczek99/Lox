@@ -18,7 +18,6 @@ class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
     private enum FunctionType {
         NONE,
         FUNCTION,
-        INITIALIZER,
         METHOD
     }
 
@@ -46,7 +45,7 @@ class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
     public Void visitFunctionStmt(Stmt.Function stmt) {
         declare(stmt.name);
         define(stmt.name);
-        resolveFunction(stmt, FunctionType.FUNCTION);
+        resolveFunction(stmt.params, stmt.body, FunctionType.FUNCTION);
         return null;
     }
 
@@ -162,13 +161,7 @@ class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
 
     @Override
     public Void visitFunctionExpr(Expr.Function expr) {
-        beginScope();
-        for (Token param : expr.params) {
-            declare(param);
-            define(param);
-        }
-        resolve(expr.body);
-        endScope();
+        resolveFunction(expr.params, expr.body, FunctionType.FUNCTION);
         return null;
     }
 
@@ -180,16 +173,16 @@ class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
         expr.accept(this);
     }
 
-    private void resolveFunction(Stmt.Function function, FunctionType type) {
+    private void resolveFunction(List<Token> params, List<Stmt> body, FunctionType type) {
         FunctionType enclosingFunction = currentFunction;
         currentFunction = type;
 
         beginScope();
-        for (Token param : function.params) {
+        for (Token param : params) {
             declare(param);
             define(param);
         }
-        resolve(function.body);
+        resolve(body);
         endScope();
         currentFunction = enclosingFunction;
     }

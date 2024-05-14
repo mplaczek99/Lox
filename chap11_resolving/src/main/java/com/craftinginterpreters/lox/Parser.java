@@ -155,8 +155,12 @@ class Parser {
     }
 
     private Stmt.Function function(String kind) {
-        Token name = consume(IDENTIFIER, "Expect " + kind + " name.");
-        consume(LEFT_PAREN, "Expect '(' after " + kind + " name.");
+        Token name = null;
+        if (kind.equals("function")) {
+            name = consume(IDENTIFIER, "Expect " + kind + " name.");
+        }
+
+        consume(LEFT_PAREN, "Expect '(' after " + (name == null ? kind : name.lexeme) + " name.");
         List<Token> parameters = new ArrayList<>();
         if (!check(RIGHT_PAREN)) {
             do {
@@ -169,7 +173,7 @@ class Parser {
         }
         consume(RIGHT_PAREN, "Expect ')' after parameters.");
 
-        consume(LEFT_BRACE, "Expect '{' before " + kind + " body.");
+        consume(LEFT_BRACE, "Expect '{' before " + (name == null ? kind : name.lexeme) + " body.");
         List<Stmt> body = block();
         return new Stmt.Function(name, parameters, body);
     }
@@ -352,7 +356,7 @@ class Parser {
             } while (match(COMMA));
         }
         consume(RIGHT_PAREN, "Expect ')' after parameters.");
-
+        
         consume(LEFT_BRACE, "Expect '{' before function body.");
         List<Stmt> body = block();
         return new Expr.Function(parameters, body);
