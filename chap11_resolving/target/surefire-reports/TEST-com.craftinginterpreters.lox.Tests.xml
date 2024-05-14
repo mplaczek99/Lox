@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-21-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="/home/mplaczek/Documents/Classes/CSC447/Lox/chap11_resolving/target/surefire/surefirebooter13219526515137625061.jar /home/mplaczek/Documents/Classes/CSC447/Lox/chap11_resolving/target/surefire 2024-05-14T16-40-01_246-jvmRun1 surefire2691769897890055444tmp surefire_012006801128701271448tmp"/>
+    <property name="sun.java.command" value="/home/mplaczek/Documents/Classes/CSC447/Lox/chap11_resolving/target/surefire/surefirebooter5576018820096889982.jar /home/mplaczek/Documents/Classes/CSC447/Lox/chap11_resolving/target/surefire 2024-05-14T16-51-36_115-jvmRun1 surefire1658774569701125494tmp surefire_02053090437296031186tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/mplaczek/Documents/Classes/CSC447/Lox/chap11_resolving/target/test-classes:/home/mplaczek/Documents/Classes/CSC447/Lox/chap11_resolving/target/classes:/home/mplaczek/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.0/junit-jupiter-engine-5.10.0.jar:/home/mplaczek/.m2/repository/org/junit/platform/junit-platform-engine/1.10.0/junit-platform-engine-1.10.0.jar:/home/mplaczek/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/mplaczek/.m2/repository/org/junit/platform/junit-platform-commons/1.10.0/junit-platform-commons-1.10.0.jar:/home/mplaczek/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.0/junit-jupiter-api-5.10.0.jar:/home/mplaczek/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -27,7 +27,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="surefire.real.class.path" value="/home/mplaczek/Documents/Classes/CSC447/Lox/chap11_resolving/target/surefire/surefirebooter13219526515137625061.jar"/>
+    <property name="surefire.real.class.path" value="/home/mplaczek/Documents/Classes/CSC447/Lox/chap11_resolving/target/surefire/surefirebooter5576018820096889982.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.3+9-Ubuntu-1ubuntu1"/>
     <property name="user.name" value="mplaczek"/>
@@ -54,13 +54,13 @@
     <property name="java.class.version" value="65.0"/>
   </properties>
   <testcase name="break1" classname="com.craftinginterpreters.lox.Tests" time="0.012"/>
-  <testcase name="break2" classname="com.craftinginterpreters.lox.Tests" time="0.001"/>
+  <testcase name="break2" classname="com.craftinginterpreters.lox.Tests" time="0"/>
   <testcase name="break3" classname="com.craftinginterpreters.lox.Tests" time="0.001"/>
   <testcase name="break4" classname="com.craftinginterpreters.lox.Tests" time="0.001"/>
   <testcase name="break5" classname="com.craftinginterpreters.lox.Tests" time="0.001"/>
   <testcase name="anonymous1" classname="com.craftinginterpreters.lox.Tests" time="0"/>
   <testcase name="anonymous2" classname="com.craftinginterpreters.lox.Tests" time="0"/>
-  <testcase name="anonymous3" classname="com.craftinginterpreters.lox.Tests" time="0"/>
+  <testcase name="anonymous3" classname="com.craftinginterpreters.lox.Tests" time="0.001"/>
   <testcase name="anonymous4" classname="com.craftinginterpreters.lox.Tests" time="0"/>
   <testcase name="anonymous5" classname="com.craftinginterpreters.lox.Tests" time="0.009">
     <failure message="expected: &lt;1&gt; but was: &lt;Parse error&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <1> but was: <Parse error>
@@ -71,7 +71,7 @@
 [line 1] Error at '}': Expect expression.
 ]]></system-err>
   </testcase>
-  <testcase name="anonymous6" classname="com.craftinginterpreters.lox.Tests" time="0">
+  <testcase name="anonymous6" classname="com.craftinginterpreters.lox.Tests" time="0.001">
     <failure message="expected: &lt;&gt; but was: &lt;Parse error&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <> but was: <Parse error>
 	at com.craftinginterpreters.lox.Tests.outputTest(Tests.java:65)
 	at com.craftinginterpreters.lox.Tests.anonymous6(Tests.java:90)
@@ -80,6 +80,6 @@
 [line 1] Error at '}': Expect expression.
 ]]></system-err>
   </testcase>
-  <testcase name="breakResolve1" classname="com.craftinginterpreters.lox.Tests" time="0.001"/>
-  <testcase name="breakResolve2" classname="com.craftinginterpreters.lox.Tests" time="0"/>
+  <testcase name="breakResolve1" classname="com.craftinginterpreters.lox.Tests" time="0"/>
+  <testcase name="breakResolve2" classname="com.craftinginterpreters.lox.Tests" time="0.001"/>
 </testsuite>

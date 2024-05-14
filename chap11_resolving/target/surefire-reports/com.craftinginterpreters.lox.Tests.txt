@@ -7,7 +7,7 @@ org.opentest4j.AssertionFailedError: expected: <1> but was: <Parse error>
 	at com.craftinginterpreters.lox.Tests.outputTest(Tests.java:65)
 	at com.craftinginterpreters.lox.Tests.anonymous5(Tests.java:86)
 
-anonymous6  Time elapsed: 0 s  <<< FAILURE!
+anonymous6  Time elapsed: 0.001 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <> but was: <Parse error>
 	at com.craftinginterpreters.lox.Tests.outputTest(Tests.java:65)
 	at com.craftinginterpreters.lox.Tests.anonymous6(Tests.java:90)
