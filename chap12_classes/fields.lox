@@ -1,0 +1,8 @@
+class C {
+  init (drink) {
+    this.drink = drink;
+  }
+}
+var x = C("tea");
+x.drink = "coffee";
+print x.drink;

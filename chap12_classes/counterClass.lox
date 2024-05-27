@@ -1,0 +1,18 @@
+class Counter {
+  init () {
+    this.a = -1;
+  }
+  countUp   () { this.a = this.a + 1; return this.a; }
+  countDown () { this.a = this.a - 1; return this.a; }
+}
+var c1 = Counter();
+var c2 = Counter();
+print c1.countUp();
+print c1.countUp();
+print c2.countUp();
+print c2.countUp();
+
+//var c3 = Counter();
+//c3.countUp = c3.countDown;
+//print c3.countUp();
+//print c3.countUp();

@@ -1,0 +1,20 @@
+class C {
+  init () {
+    this.a = 20;
+  }
+  count () { this.a = this.a + 1; return this.a; }
+  get () {
+    var outer = this;
+    class InnerClass {
+      init () {
+        this.b = 300;
+      }
+      m () { return this.b + outer.a; }
+    }
+    return InnerClass(); 
+  }
+}
+var c = C();
+var innerInstance = c.get();
+c.count();
+print innerInstance.m();

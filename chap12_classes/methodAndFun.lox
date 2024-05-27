@@ -1,0 +1,25 @@
+class Counter {
+  init () {
+    this.a = -1;
+  }
+  countUp   () { this.a = this.a + 1; return this.a; }
+  countDown () { this.a = this.a - 1; return this.a; }
+}
+var c1 = Counter();
+var f = c1.countUp;
+print f();
+print f();
+
+
+class Person {
+  init (name) {
+    this.name = name;
+  }
+  sayName() {
+    print this.name;
+  }
+}
+var jane = Person("Jane");
+var bill = Person("Bill");
+bill.sayName = jane.sayName;
+bill.sayName(); 
