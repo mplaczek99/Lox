@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.craftinginterpreters.lox.Tests" time="0.031" tests="6" errors="1" skipped="0" failures="5">
+  <properties>
+    <property name="java.specification.version" value="21"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/home/mplaczek/Documents/Classes/CSC447/Lox/chap13_inheritance/target/test-classes:/home/mplaczek/Documents/Classes/CSC447/Lox/chap13_inheritance/target/classes:/home/mplaczek/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.0/junit-jupiter-api-5.10.0.jar:/home/mplaczek/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/mplaczek/.m2/repository/org/junit/platform/junit-platform-commons/1.10.0/junit-platform-commons-1.10.0.jar:/home/mplaczek/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/mplaczek/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.0/junit-jupiter-engine-5.10.0.jar:/home/mplaczek/.m2/repository/org/junit/platform/junit-platform-engine/1.10.0/junit-platform-engine-1.10.0.jar:"/>
+    <property name="java.vm.vendor" value="Ubuntu"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://ubuntu.com/"/>
+    <property name="os.name" value="Linux"/>
+    <property name="java.vm.specification.version" value="21"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-21-openjdk-amd64/lib"/>
+    <property name="sun.java.command" value="/home/mplaczek/Documents/Classes/CSC447/Lox/chap13_inheritance/target/surefire/surefirebooter13703374574228215102.jar /home/mplaczek/Documents/Classes/CSC447/Lox/chap13_inheritance/target/surefire 2024-05-28T23-09-11_816-jvmRun1 surefire4686609703805101443tmp surefire_05062219664131945347tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/home/mplaczek/Documents/Classes/CSC447/Lox/chap13_inheritance/target/test-classes:/home/mplaczek/Documents/Classes/CSC447/Lox/chap13_inheritance/target/classes:/home/mplaczek/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.0/junit-jupiter-api-5.10.0.jar:/home/mplaczek/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/mplaczek/.m2/repository/org/junit/platform/junit-platform-commons/1.10.0/junit-platform-commons-1.10.0.jar:/home/mplaczek/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/mplaczek/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.0/junit-jupiter-engine-5.10.0.jar:/home/mplaczek/.m2/repository/org/junit/platform/junit-platform-engine/1.10.0/junit-platform-engine-1.10.0.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/home/mplaczek"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2024-04-16"/>
+    <property name="java.home" value="/usr/lib/jvm/java-21-openjdk-amd64"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/home/mplaczek/Documents/Classes/CSC447/Lox/chap13_inheritance"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="surefire.real.class.path" value="/home/mplaczek/Documents/Classes/CSC447/Lox/chap13_inheritance/target/surefire/surefirebooter13703374574228215102.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="21.0.3+9-Ubuntu-1ubuntu1"/>
+    <property name="user.name" value="mplaczek"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="6.8.0-76060800daily20240311-generic"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="localRepository" value="/home/mplaczek/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://bugs.launchpad.net/ubuntu/+source/openjdk-21"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="java.version" value="21.0.3"/>
+    <property name="user.dir" value="/home/mplaczek/Documents/Classes/CSC447/Lox/chap13_inheritance"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Ubuntu"/>
+    <property name="java.vm.version" value="21.0.3+9-Ubuntu-1ubuntu1"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="65.0"/>
+  </properties>
+  <testcase name="twoObjects" classname="com.craftinginterpreters.lox.Tests" time="0.02">
+    <error type="java.lang.StackOverflowError">java.lang.StackOverflowError
+</error>
+  </testcase>
+  <testcase name="inner1" classname="com.craftinginterpreters.lox.Tests" time="0.004">
+    <failure message="expected: &lt;[A]:[/A]&gt; but was: &lt;[A]:Runtime error&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <[A]:[/A]> but was: <[A]:Runtime error>
+	at com.craftinginterpreters.lox.Tests.outputTest(Tests.java:65)
+	at com.craftinginterpreters.lox.Tests.inner1(Tests.java:99)
+]]></failure>
+    <system-out><![CDATA[(class O)
+(class A < O (fun m() (print [A])(; (call inner ))(print [/A])))
+(class B < A (fun m() (; (call inner ))(print   [B])(; (call inner ))(print   [/B])(; (call inner ))))
+(class C < B (fun m() (print     [C /])(; (call inner ))))
+(class E < A (fun m() (print   [E /])))
+(; (call (. (call A ) m) ))
+]]></system-out>
+    <system-err><![CDATA[Undefined variable 'inner'.
+[line 5]
+]]></system-err>
+  </testcase>
+  <testcase name="inner2" classname="com.craftinginterpreters.lox.Tests" time="0.001">
+    <failure message="expected: &lt;[A]:  [B]:  [/B]:[/A]&gt; but was: &lt;Runtime error&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <[A]:  [B]:  [/B]:[/A]> but was: <Runtime error>
+	at com.craftinginterpreters.lox.Tests.outputTest(Tests.java:65)
+	at com.craftinginterpreters.lox.Tests.inner2(Tests.java:106)
+]]></failure>
+    <system-out><![CDATA[(class O)
+(class A < O (fun m() (print [A])(; (call inner ))(print [/A])))
+(class B < A (fun m() (; (call inner ))(print   [B])(; (call inner ))(print   [/B])(; (call inner ))))
+(class C < B (fun m() (print     [C /])(; (call inner ))))
+(class E < A (fun m() (print   [E /])))
+(; (call (. (call B ) m) ))
+]]></system-out>
+    <system-err><![CDATA[Undefined variable 'inner'.
+[line 11]
+]]></system-err>
+  </testcase>
+  <testcase name="inner3" classname="com.craftinginterpreters.lox.Tests" time="0.001">
+    <failure message="expected: &lt;[A]:    [C /]:  [B]:    [C /]:  [/B]:    [C /]:[/A]&gt; but was: &lt;    [C /]:Runtime error&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <[A]:    [C /]:  [B]:    [C /]:  [/B]:    [C /]:[/A]> but was: <    [C /]:Runtime error>
+	at com.craftinginterpreters.lox.Tests.outputTest(Tests.java:65)
+	at com.craftinginterpreters.lox.Tests.inner3(Tests.java:113)
+]]></failure>
+    <system-out><![CDATA[(class O)
+(class A < O (fun m() (print [A])(; (call inner ))(print [/A])))
+(class B < A (fun m() (; (call inner ))(print   [B])(; (call inner ))(print   [/B])(; (call inner ))))
+(class C < B (fun m() (print     [C /])(; (call inner ))))
+(class E < A (fun m() (print   [E /])))
+(; (call (. (call C ) m) ))
+]]></system-out>
+    <system-err><![CDATA[Undefined variable 'inner'.
+[line 21]
+]]></system-err>
+  </testcase>
+  <testcase name="inner4" classname="com.craftinginterpreters.lox.Tests" time="0">
+    <failure message="expected: &lt;[A]:  [E /]:[/A]&gt; but was: &lt;  [E /]&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <[A]:  [E /]:[/A]> but was: <  [E /]>
+	at com.craftinginterpreters.lox.Tests.outputTest(Tests.java:65)
+	at com.craftinginterpreters.lox.Tests.inner4(Tests.java:120)
+]]></failure>
+  </testcase>
+  <testcase name="parameters" classname="com.craftinginterpreters.lox.Tests" time="0">
+    <failure message="expected: &lt;[A I]:  [B J]:    [C K/]:  [/B J]:[/A I]&gt; but was: &lt;    [C I/]&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <[A I]:  [B J]:    [C K/]:  [/B J]:[/A I]> but was: <    [C I/]>
+	at com.craftinginterpreters.lox.Tests.outputTest(Tests.java:65)
+	at com.craftinginterpreters.lox.Tests.parameters(Tests.java:127)
+]]></failure>
+  </testcase>
+</testsuite>

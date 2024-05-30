@@ -123,11 +123,24 @@ class Interpreter implements Expr.Visitor<Object>,
 
 @Override
 public Object visitGetExpr(Expr.Get expr) {
+    // Evaluate the object expression
     Object object = evaluate(expr.object);
-    if (object instanceof LoxInstance) {
-        return ((LoxInstance) object).get(expr.name);
-    }
     
+    // If the object is an instance
+    if (object instanceof LoxInstance) {
+        LoxInstance instance = (LoxInstance) object;
+        
+        // Check if it's a getter method
+        LoxFunction getter = instance.getKlass().findGetter(expr.name.lexeme);
+        if (getter != null) {
+            return getter.bind(instance).call(this, new ArrayList<>());
+        }
+
+        // If not a getter, check if it's a field or method
+        return instance.get(expr.name);
+    }
+
+    // If the object is a class, check for static methods
     if (object instanceof LoxClass) {
         LoxFunction staticMethod = ((LoxClass) object).findStaticMethod(expr.name.lexeme);
         if (staticMethod != null) {
@@ -135,8 +148,10 @@ public Object visitGetExpr(Expr.Get expr) {
         }
     }
 
+    // If the object is neither an instance nor a class, throw an error
     throw new RuntimeError(expr.name, "Only instances and classes have properties.");
 }
+
 
 
 @Override

@@ -1,13 +1,13 @@
 -------------------------------------------------------------------------------
 Test set: com.craftinginterpreters.lox.Tests
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.025 s <<< FAILURE! - in com.craftinginterpreters.lox.Tests
-classGetters1  Time elapsed: 0.018 s  <<< FAILURE!
+Tests run: 5, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.029 s <<< FAILURE! - in com.craftinginterpreters.lox.Tests
+classGetters1  Time elapsed: 0.02 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <50.265482448> but was: <<fn area>>
 	at com.craftinginterpreters.lox.Tests.outputTest(Tests.java:65)
 	at com.craftinginterpreters.lox.Tests.classGetters1(Tests.java:111)
 
-classGetters2  Time elapsed: 0.001 s  <<< FAILURE!
+classGetters2  Time elapsed: 0 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <22> but was: <<fn double>>
 	at com.craftinginterpreters.lox.Tests.outputTest(Tests.java:65)
 	at com.craftinginterpreters.lox.Tests.classGetters2(Tests.java:129)

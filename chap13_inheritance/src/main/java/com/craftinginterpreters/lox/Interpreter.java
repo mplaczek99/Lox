@@ -121,40 +121,48 @@ class Interpreter implements Expr.Visitor<Object>,
     return null;
   }
   @Override
-  public Void visitClassStmt(Stmt.Class stmt) {
-    Object superclass = null;
-    if (stmt.superclass != null) {
-      superclass = evaluate(stmt.superclass);
-      if (!(superclass instanceof LoxClass)) {
-        throw new RuntimeError(stmt.superclass.name,
-            "Superclass must be a class.");
-      }
-    }
-
-    environment.define(stmt.name.lexeme, null);
-
-    if (stmt.superclass != null) {
-      environment = new Environment(environment);
-      environment.define("super", superclass);
-    }
-
-    Map<String, LoxFunction> methods = new HashMap<>();
-    for (Stmt.Function method : stmt.methods) {
-      LoxFunction function = new LoxFunction(method, environment,
-          method.name.lexeme.equals("init"));
-      methods.put(method.name.lexeme, function);
-    }
-
-    LoxClass klass = new LoxClass(stmt.name.lexeme,
-        (LoxClass)superclass, methods);
-
-    if (superclass != null) {
-      environment = environment.enclosing;
-    }
-
-    environment.assign(stmt.name, klass);
+public Object visitInnerExpr(Expr.Inner expr) {
+  if (currentClass == null || currentClass.superclass == null) {
+    throw new RuntimeError(null, "Can't use 'inner' outside of a method.");
+  }
+  LoxFunction method = currentClass.superclass.findMethod(currentMethod);
+  if (method == null) {
     return null;
   }
+  return method.bind(currentInstance).call(this, currentArguments);
+}
+@Override
+public Void visitClassStmt(Stmt.Class stmt) {
+  Object superclass = null;
+  if (stmt.superclass != null) {
+    superclass = evaluate(stmt.superclass);
+    if (!(superclass instanceof LoxClass)) {
+      throw new RuntimeError(stmt.superclass.name, "Superclass must be a class.");
+    }
+  }
+
+  environment.define(stmt.name.lexeme, null);
+
+  if (stmt.superclass != null) {
+    environment = new Environment(environment);
+    environment.define("super", superclass);
+  }
+
+  Map<String, LoxFunction> methods = new HashMap<>();
+  for (Stmt.Function method : stmt.methods) {
+    LoxFunction function = new LoxFunction(method, environment, method.name.lexeme.equals("init"));
+    methods.put(method.name.lexeme, function);
+  }
+
+  LoxClass klass = new LoxClass(stmt.name.lexeme, (LoxClass)superclass, methods);
+
+  if (superclass != null) {
+    environment = environment.enclosing;
+  }
+
+  environment.assign(stmt.name, klass);
+  return null;
+}
   @Override
   public Void visitExpressionStmt(Stmt.Expression stmt) {
     evaluate(stmt.expression);

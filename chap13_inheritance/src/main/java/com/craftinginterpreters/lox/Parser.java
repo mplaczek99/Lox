@@ -337,6 +337,8 @@ class Parser {
     }
 
     if (match(THIS)) return new Expr.This(previous());
+    
+    if (match(INNER)) return new Expr.Inner();
 
     if (match(IDENTIFIER)) {
       return new Expr.Variable(previous());

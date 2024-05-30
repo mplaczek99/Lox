@@ -16,9 +16,16 @@ abstract class Expr {
     R visitThisExpr(This expr);
     R visitUnaryExpr(Unary expr);
     R visitVariableExpr(Variable expr);
+    R visitInnerExpr(Inner expr);
   }
 
   // Nested Expr classes here...
+  static class Inner extends Expr {
+    @Override
+    <R> R accept(Visitor<R> visitor) {
+      return visitor.visitInnerExpr(this);
+    }
+  }
   static class Assign extends Expr {
     Assign(Token name, Expr value) {
       this.name = name;

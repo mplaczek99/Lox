@@ -1,0 +1,32 @@
+-------------------------------------------------------------------------------
+Test set: com.craftinginterpreters.lox.Tests
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 5, Errors: 1, Skipped: 0, Time elapsed: 0.031 s <<< FAILURE! - in com.craftinginterpreters.lox.Tests
+twoObjects  Time elapsed: 0.02 s  <<< ERROR!
+java.lang.StackOverflowError
+
+inner1  Time elapsed: 0.004 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <[A]:[/A]> but was: <[A]:Runtime error>
+	at com.craftinginterpreters.lox.Tests.outputTest(Tests.java:65)
+	at com.craftinginterpreters.lox.Tests.inner1(Tests.java:99)
+
+inner2  Time elapsed: 0.001 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <[A]:  [B]:  [/B]:[/A]> but was: <Runtime error>
+	at com.craftinginterpreters.lox.Tests.outputTest(Tests.java:65)
+	at com.craftinginterpreters.lox.Tests.inner2(Tests.java:106)
+
+inner3  Time elapsed: 0.001 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <[A]:    [C /]:  [B]:    [C /]:  [/B]:    [C /]:[/A]> but was: <    [C /]:Runtime error>
+	at com.craftinginterpreters.lox.Tests.outputTest(Tests.java:65)
+	at com.craftinginterpreters.lox.Tests.inner3(Tests.java:113)
+
+inner4  Time elapsed: 0 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <[A]:  [E /]:[/A]> but was: <  [E /]>
+	at com.craftinginterpreters.lox.Tests.outputTest(Tests.java:65)
+	at com.craftinginterpreters.lox.Tests.inner4(Tests.java:120)
+
+parameters  Time elapsed: 0 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <[A I]:  [B J]:    [C K/]:  [/B J]:[/A I]> but was: <    [C I/]>
+	at com.craftinginterpreters.lox.Tests.outputTest(Tests.java:65)
+	at com.craftinginterpreters.lox.Tests.parameters(Tests.java:127)
+

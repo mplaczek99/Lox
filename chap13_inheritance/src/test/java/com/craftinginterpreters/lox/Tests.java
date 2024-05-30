@@ -57,7 +57,7 @@ class Tests {
       } else {
         interpreter.interpret(statements);
         if (Lox.hadError || Lox.hadRuntimeError) {
-          interpreter.append("Interpreter error");
+          interpreter.append("Runtime error");
           for (var stmt : statements) System.out.println(new AstPrinter().print(stmt));
         }
       }

@@ -3,59 +3,59 @@ package com.craftinginterpreters.lox;
 import java.util.List;
 
 class LoxFunction implements LoxCallable {
-  private final Stmt.Function declaration;
-  private final Environment closure;
-  private final boolean isInitializer;
-  private final boolean isGetter;
+    private final Stmt.Function declaration;
+    private final Environment closure;
+    private final boolean isInitializer;
+    private final boolean isGetter;
 
-  LoxFunction(Stmt.Function declaration, Environment closure,
-              boolean isInitializer) {
-    this(declaration, closure, isInitializer, false);
-  }
-
-  LoxFunction(Stmt.Function declaration, Environment closure,
-              boolean isInitializer, boolean isGetter) {
-    this.isInitializer = isInitializer;
-    this.isGetter = isGetter;
-    this.closure = closure;
-    this.declaration = declaration;
-  }
-
-  LoxFunction bind(LoxInstance instance) {
-    Environment environment = new Environment(closure);
-    environment.define("this", instance);
-    return new LoxFunction(declaration, environment, isInitializer, isGetter);
-  }
-
-  @Override
-  public int arity() {
-    return declaration.params.size();
-  }
-
-  @Override
-  public Object call(Interpreter interpreter,
-                     List<Object> arguments) {
-    Environment environment = new Environment(closure);
-    for (int i = 0; i < declaration.params.size(); i++) {
-      environment.define(declaration.params.get(i).lexeme,
-          arguments.get(i));
+    LoxFunction(Stmt.Function declaration, Environment closure, boolean isInitializer) {
+        this(declaration, closure, isInitializer, false);
     }
 
-    try {
-      interpreter.executeBlock(declaration.body, environment);
-    } catch (Return returnValue) {
-      if (isInitializer) return closure.getAt(0, "this");
-
-      return returnValue.value;
+    LoxFunction(Stmt.Function declaration, Environment closure, boolean isInitializer, boolean isGetter) {
+        this.isInitializer = isInitializer;
+        this.isGetter = isGetter;
+        this.closure = closure;
+        this.declaration = declaration;
     }
 
-    if (isInitializer) return closure.getAt(0, "this");
-    return null;
-  }
+    boolean isGetter() {
+        return isGetter;
+    }
 
-  @Override
-  public String toString() {
-    return "<fn " + declaration.name.lexeme + ">";
-  }
+    LoxFunction bind(LoxInstance instance) {
+        Environment environment = new Environment(closure);
+        environment.define("this", instance);
+        return new LoxFunction(declaration, environment, isInitializer, isGetter);
+    }
+
+    @Override
+    public int arity() {
+        return isGetter ? 0 : declaration.params.size();
+    }
+
+    @Override
+    public Object call(Interpreter interpreter, List<Object> arguments) {
+        Environment environment = new Environment(closure);
+        for (int i = 0; i < declaration.params.size(); i++) {
+            environment.define(declaration.params.get(i).lexeme, arguments.get(i));
+        }
+
+        try {
+            interpreter.executeBlock(declaration.body, environment);
+        } catch (Return returnValue) {
+            if (isInitializer) return closure.getAt(0, "this");
+
+            return returnValue.value;
+        }
+
+        if (isInitializer) return closure.getAt(0, "this");
+        return null;
+    }
+
+    @Override
+    public String toString() {
+        return "<fn " + declaration.name.lexeme + ">";
+    }
 }
 
